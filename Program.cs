@@ -4,6 +4,9 @@ class Program
 {
     static void Main(string[] args)
     {
+        bool play = false;
+        int numberOfTries = 0;
+        
         int GetNumber()
         {
             int userNumber;
@@ -48,34 +51,33 @@ class Program
 
             return isWinner;
         }
+       
+        bool OutOfTries(bool isWinner)
+        {
+            if (!isWinner)
+            {
+                numberOfTries += 1;
+                return false;
+            }
+            Console.WriteLine(numberOfTries == 5 ? "You lose" : $"You have {5 - numberOfTries} tries left");
+            return true;
+        }
 
         void InitiateGame()
         {
             bool isWinner;
-            int numberOfTries = 0;
             int randomlyGeneratedNumber = GetRandomNumber();
         
             do
             {
                 int userNumber = GetNumber();
-                
                 isWinner = CompareNumbers(userNumber, randomlyGeneratedNumber);
-                numberOfTries += 1;
-                
-                if (numberOfTries == 5)
-                {
-                    Console.WriteLine("You lose!");
-                    break;
-                }
-                
-                Console.WriteLine($"you have {5 - numberOfTries} tries!");
-                
+                if (OutOfTries(isWinner)) break;
+
             } while (!isWinner); 
         }
-        
-        bool play = false;
+
         Console.WriteLine("Welcome to the Numbers Game!");
-        
         do
         {
             InitiateGame();
