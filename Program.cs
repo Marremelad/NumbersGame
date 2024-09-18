@@ -4,8 +4,8 @@ class Program
 {
     static void Main(string[] args)
     {
-        bool play = false;
-        int numberOfTries = 0;
+        int numberOfTries;
+        bool play;
         
         int GetNumber()
         {
@@ -13,7 +13,7 @@ class Program
             bool isNumber;
             do
             {
-                Console.WriteLine("Please enter an integer between 1 and 20.");
+                Console.WriteLine("Please enter an integer between 1 and 20.\n");
                 isNumber = int.TryParse(Console.ReadLine(), out userNumber);
             } while (!isNumber || userNumber > 20 || userNumber < 0);
 
@@ -29,24 +29,24 @@ class Program
 
         bool CompareNumbers(int userNumber, int randomlyGeneratedNumber)
         {
+            Console.Clear();
             bool isWinner;
-
             if (userNumber != randomlyGeneratedNumber)
             {
                 isWinner = false;
                 if (userNumber < randomlyGeneratedNumber)
                 {
-                    Console.WriteLine("You guessed to low");
+                    Console.WriteLine("You guessed to low.");
                 }
                 else if (userNumber > randomlyGeneratedNumber)
                 {
-                    Console.WriteLine("You guessed to high");
+                    Console.WriteLine("You guessed to high.");
                 }
             }
             else
             {
                 isWinner = true;
-                Console.WriteLine("You got it right");
+                Console.WriteLine("\nCongratulations! You win!");
             }
 
             return isWinner;
@@ -54,40 +54,39 @@ class Program
        
         bool OutOfTries(bool isWinner)
         {
-            if (!isWinner)
+            if (numberOfTries >= 5)
             {
-                numberOfTries += 1;
-                return false;
+                Console.WriteLine("\nYou lose!");
+                return true;
             }
-            Console.WriteLine(numberOfTries == 5 ? "You lose" : $"You have {5 - numberOfTries} tries left");
-            return true;
+            return isWinner;
         }
 
         void InitiateGame()
         {
             bool isWinner;
             int randomlyGeneratedNumber = GetRandomNumber();
-        
+            numberOfTries = 0;
+            
             do
             {
+                Console.WriteLine($"Number of tries left: {5 - numberOfTries}.");
                 int userNumber = GetNumber();
                 isWinner = CompareNumbers(userNumber, randomlyGeneratedNumber);
-                if (OutOfTries(isWinner)) break;
+                numberOfTries++;
 
-            } while (!isWinner); 
+            } while (!OutOfTries(isWinner)); 
         }
 
-        Console.WriteLine("Welcome to the Numbers Game!");
+        
         do
         {
+            Console.Clear();
+            Console.WriteLine("Welcome to the Numbers Game!");
             InitiateGame();
-            Console.WriteLine("Do you want to play again? (y/n)");
-            string? userInput = Console.ReadLine();
             
-            if (!string.IsNullOrEmpty(userInput) && userInput.ToLower() == "y")
-            {
-                play = true;
-            }
+            Console.WriteLine("\nDo you want to play again? (y/n).");
+            play = Console.ReadLine()?.ToLower() == "y";
 
         } while (play);
     }
