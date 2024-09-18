@@ -21,7 +21,7 @@ class Program
         {
             Random random = new Random();
             int randomNumber = random.Next(1, 21);
-            return randomNumber;
+            return randomNumber; // Hello
         }
 
         string CompareNumbers(int userNumber, int randomlyGeneratedNumber) // Change to bool method.
