@@ -24,11 +24,21 @@ class Program
             return randomNumber;
         }
 
-        bool CompareNumbers(int userNumber, int randomlyGeneratedNumber)
+        string CompareNumbers(int userNumber, int randomlyGeneratedNumber)
         {
-            return userNumber == randomlyGeneratedNumber ? true : false;
-        }
-        
-        
+            string? result;
+
+            if (userNumber != randomlyGeneratedNumber)
+            {
+                result = userNumber < randomlyGeneratedNumber ? "You guessed to low" : "You guessed to high";
+            }
+            else
+            {
+                result = "You guessed correctly";
+            }
+
+            return result;
+
+        } 
     }
 }
