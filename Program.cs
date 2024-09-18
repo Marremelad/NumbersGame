@@ -78,7 +78,6 @@ class Program
             } while (!OutOfTries(isWinner)); 
         }
 
-        
         do
         {
             Console.Clear();
