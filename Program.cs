@@ -24,7 +24,7 @@ class Program
             return randomNumber;
         }
 
-        string CompareNumbers(int userNumber, int randomlyGeneratedNumber)
+        string CompareNumbers(int userNumber, int randomlyGeneratedNumber) // Change to bool method.
         {
             string? result;
 
@@ -37,7 +37,7 @@ class Program
                 result = "You guessed correctly";
             }
 
-            return result;
+            return result; // return bool and print result statements instead.
 
         } 
     }
