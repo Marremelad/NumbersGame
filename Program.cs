@@ -21,24 +21,47 @@ class Program
         {
             Random random = new Random();
             int randomNumber = random.Next(1, 21);
-            return randomNumber; // Hello
+            return randomNumber; 
         }
 
-        string CompareNumbers(int userNumber, int randomlyGeneratedNumber) // Change to bool method.
+        bool CompareNumbers(int userNumber, int randomlyGeneratedNumber)
         {
-            string? result;
+            bool isWinner;
 
             if (userNumber != randomlyGeneratedNumber)
             {
-                result = userNumber < randomlyGeneratedNumber ? "You guessed to low" : "You guessed to high";
+                isWinner = false;
+                if (userNumber < randomlyGeneratedNumber)
+                {
+                    Console.WriteLine("You guessed to low");
+                }
+                else if (userNumber > randomlyGeneratedNumber)
+                {
+                    Console.WriteLine("You guessed to high");
+                }
             }
             else
             {
-                result = "You guessed correctly";
+                isWinner = true;
+                Console.WriteLine("You got it right");
             }
 
-            return result; // return bool and print result statements instead.
+            return isWinner;
+        }
 
-        } 
+        void InitiateGame()
+        {
+            bool isWinner;
+            int randomlyGeneratedNumber = GetRandomNumber();
+        
+            do
+            {
+                int userNumber = GetNumber();
+                isWinner = CompareNumbers(userNumber, randomlyGeneratedNumber);
+            
+            } while (!isWinner); 
+        }
+        
+        Console.WriteLine("Welcome to the Numbers Game!");
     }
 }
