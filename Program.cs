@@ -63,7 +63,7 @@ class Program
         // Method to check if the user is out of tries or has won.
         bool OutOfTries(bool isWinner, int numberOfTries)
         {
-            if (numberOfTries >= 5)
+            if (numberOfTries <= 0)
             {
                 Console.WriteLine("\nYou lose!");
                 return true; // Game over if the user runs out of tries.
@@ -79,8 +79,8 @@ class Program
             
             do
             {
-                Console.Write($"You have {5 - numberOfTries} number of tries left. ");
-                numberOfTries++; // Increment the number of tries.
+                Console.Write($"You have {numberOfTries} number of tries left. ");
+                numberOfTries--; // Increment the number of tries.
 
                 // Continue the game until the user wins or runs out of tries.
             } while (!OutOfTries(CompareNumbers(GetNumber(), randomlyGeneratedNumber), numberOfTries)); 
