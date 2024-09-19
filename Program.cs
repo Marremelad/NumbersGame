@@ -5,8 +5,6 @@ class Program
     static void Main(string[] args)
     {
         
-        bool play;
-        
         int GetNumber()
         {
             int userNumber;
@@ -65,8 +63,7 @@ class Program
             InitiateGame();
             
             Console.WriteLine("\nDo you want to play again? (y/n).");
-            play = Console.ReadLine()?.ToLower() == "y";
 
-        } while (play);
+        } while (Console.ReadLine()?.ToLower( ) == "y");
     }
 }
