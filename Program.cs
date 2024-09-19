@@ -1,4 +1,8 @@
-﻿namespace NumbersGame;
+﻿//Lab 3 - Gissa numret
+//Mauricio Corte
+//.NET24
+
+namespace NumbersGame;
 
 class Program
 {
