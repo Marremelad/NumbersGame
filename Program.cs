@@ -56,7 +56,7 @@ class Program
             
             do
             {
-                Console.WriteLine($"Number of tries left: {5 - numberOfTries}.");
+                Console.Write($"You have {5 - numberOfTries} number of tries left. ");
                 numberOfTries++; // Increment the number of tries.
 
                 // Continue the game until the user wins or runs out of tries.
@@ -67,7 +67,7 @@ class Program
         do
         {
             Console.Clear(); // Clear the console for a fresh start.
-            Console.WriteLine("Welcome to the Numbers Game!");
+            Console.WriteLine("Welcome to the Numbers Game! Can you guess the number? Good luck!");
             InitiateGame(); // Start a new game.
             
             Console.WriteLine("\nDo you want to play again? (y/n)."); 
@@ -76,6 +76,6 @@ class Program
         } while (Console.ReadLine()?.ToLower( ) == "y");
         
         // End of the game.
-        Console.WriteLine("Thanks you for playing!");
+        Console.WriteLine("Thank you for playing!");
     }
 }
