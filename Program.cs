@@ -4,7 +4,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        int numberOfTries;
+        
         bool play;
         
         int GetNumber()
@@ -34,7 +34,7 @@ class Program
 
         }
        
-        bool OutOfTries(bool isWinner)
+        bool OutOfTries(bool isWinner, int numberOfTries)
         {
             if (numberOfTries >= 5)
             {
@@ -47,7 +47,7 @@ class Program
         void InitiateGame()
         {
             int randomlyGeneratedNumber = GetRandomNumber();
-            numberOfTries = 0;
+            int numberOfTries = 0;
             Console.WriteLine(randomlyGeneratedNumber);
             
             do
@@ -55,7 +55,7 @@ class Program
                 Console.WriteLine($"Number of tries left: {5 - numberOfTries}.");
                 numberOfTries++;
 
-            } while (!OutOfTries(CompareNumbers(GetNumber(), randomlyGeneratedNumber))); 
+            } while (!OutOfTries(CompareNumbers(GetNumber(), randomlyGeneratedNumber), numberOfTries)); 
         }
 
         do
