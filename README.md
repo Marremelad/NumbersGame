@@ -1,1 +1,1 @@
-Lab 3 - Gissa numret
+Tredje labben i kursen programmering med C#.
