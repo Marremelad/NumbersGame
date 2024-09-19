@@ -29,27 +29,14 @@ class Program
 
         bool CompareNumbers(int userNumber, int randomlyGeneratedNumber)
         {
-            Console.Clear();
-            bool isWinner;
-            if (userNumber != randomlyGeneratedNumber)
-            {
-                isWinner = false;
-                if (userNumber < randomlyGeneratedNumber)
-                {
-                    Console.WriteLine("You guessed to low.");
-                }
-                else if (userNumber > randomlyGeneratedNumber)
-                {
-                    Console.WriteLine("You guessed to high.");
-                }
-            }
-            else
-            {
-                isWinner = true;
-                Console.WriteLine("\nCongratulations! You win!");
-            }
+            Console.WriteLine(userNumber == randomlyGeneratedNumber 
+                ? "Congratulations, You won!" 
+                : userNumber < randomlyGeneratedNumber 
+                    ? "You guessed to low!" 
+                    : "You guessed to high!");
+            
+            return userNumber == randomlyGeneratedNumber;
 
-            return isWinner;
         }
        
         bool OutOfTries(bool isWinner)
@@ -64,18 +51,16 @@ class Program
 
         void InitiateGame()
         {
-            bool isWinner;
             int randomlyGeneratedNumber = GetRandomNumber();
             numberOfTries = 0;
+            Console.WriteLine(randomlyGeneratedNumber);
             
             do
             {
                 Console.WriteLine($"Number of tries left: {5 - numberOfTries}.");
-                int userNumber = GetNumber();
-                isWinner = CompareNumbers(userNumber, randomlyGeneratedNumber);
                 numberOfTries++;
 
-            } while (!OutOfTries(isWinner)); 
+            } while (!OutOfTries(CompareNumbers(GetNumber(), randomlyGeneratedNumber))); 
         }
 
         do
