@@ -15,17 +15,12 @@ class Program
             {
                 Console.WriteLine("Please enter an integer between 1 and 20.\n");
                 isNumber = int.TryParse(Console.ReadLine(), out userNumber);
-            } while (!isNumber || userNumber > 20 || userNumber < 0);
+            } while (!isNumber || userNumber < 1 || userNumber > 20);
 
             return userNumber;
         }
-        
-        int GetRandomNumber()
-        {
-            Random random = new Random();
-            int randomNumber = random.Next(1, 21);
-            return randomNumber; 
-        }
+
+        int GetRandomNumber() => new Random().Next(1, 21);
 
         bool CompareNumbers(int userNumber, int randomlyGeneratedNumber)
         {
