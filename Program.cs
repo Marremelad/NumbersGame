@@ -66,6 +66,7 @@ class Program
             int randomlyGeneratedNumber = GetRandomNumber(); // Generate a new random number.
             int numberOfTries = ChooseDifficulty(); // Initialize number of tries.
             
+            // Compare user input to random number and track number of times guessed.
             while (true)
             {
                 Console.Write($"You have {numberOfTries} number of tries left. ");
