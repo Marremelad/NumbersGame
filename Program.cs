@@ -57,7 +57,7 @@ class Program
         }
         
         // Method to start and manage the game.
-        void InitiateGame()
+        void PlayGame()
         {
             int randomlyGeneratedNumber = GetRandomNumber(); // Generate a new random number.
             Console.WriteLine(randomlyGeneratedNumber);
@@ -86,7 +86,7 @@ class Program
         {
             Console.Clear(); // Clear the console for a fresh start.
             Console.WriteLine("Welcome to the Numbers Game! Can you guess the number? Good luck!");
-            InitiateGame(); // Start a new game.
+            PlayGame(); // Start a new game.
             
             Console.WriteLine("Do you want to play again? (y/n)."); 
         
