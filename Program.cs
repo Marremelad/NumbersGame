@@ -34,7 +34,7 @@ class Program
             bool isNumber;
             do
             {
-                Console.WriteLine("Please enter an integer between 1 and 20.\n");
+                Console.WriteLine("Please enter an integer between 1 and 20.");
                 // Try to parse the user input as an integer.
                 isNumber = int.TryParse(Console.ReadLine(), out userNumber);
             } while (!isNumber || userNumber < 1 || userNumber > 20);
@@ -48,44 +48,39 @@ class Program
         // Method to compare user's guess with the randomly generated number.
         bool CompareNumbers(int userNumber, int randomlyGeneratedNumber)
         {
-            // Print appropriate message based on comparison.
-            Console.WriteLine(userNumber == randomlyGeneratedNumber 
-                ? "Congratulations, You won!" 
-                : userNumber < randomlyGeneratedNumber 
-                    ? "You guessed to low!" 
-                    : "You guessed to high!");
+            // Compare the numbers, output if right or wrong.
+            Console.WriteLine(userNumber == randomlyGeneratedNumber ? "Congratulations, you won!" :
+                userNumber > randomlyGeneratedNumber ? "You guessed to high." :
+                "You guessed to low.");
             
-            // Return whether the user guessed correctly.
             return userNumber == randomlyGeneratedNumber;
-
         }
-       
-        // Method to check if the user is out of tries or has won.
-        bool OutOfTries(bool isWinner, int numberOfTries)
-        {
-            if (numberOfTries <= 0)
-            {
-                Console.WriteLine("\nYou lose!");
-                return true; // Game over if the user runs out of tries.
-            }
-            return isWinner; // Return whether the user has won.
-        }
-
+        
         // Method to start and manage the game.
         void InitiateGame()
         {
             int randomlyGeneratedNumber = GetRandomNumber(); // Generate a new random number.
+            Console.WriteLine(randomlyGeneratedNumber);
             int numberOfTries = ChooseDifficulty(); // Initialize number of tries.
+
             
-            do
+            while (true)
             {
                 Console.Write($"You have {numberOfTries} number of tries left. ");
-                numberOfTries--; // Increment the number of tries.
-
-                // Continue the game until the user wins or runs out of tries.
-            } while (!OutOfTries(CompareNumbers(GetNumber(), randomlyGeneratedNumber), numberOfTries)); 
+                if (!CompareNumbers(GetNumber(), randomlyGeneratedNumber))
+                {
+                    numberOfTries--;
+                    if (numberOfTries == 0)
+                    {
+                        Console.WriteLine("You lose...");
+                        break;
+                    }
+                }
+                else break;
+            }
+                
         }
-
+        
         // Main game loop.
         do
         {
@@ -93,12 +88,12 @@ class Program
             Console.WriteLine("Welcome to the Numbers Game! Can you guess the number? Good luck!");
             InitiateGame(); // Start a new game.
             
-            Console.WriteLine("\nDo you want to play again? (y/n)."); 
+            Console.WriteLine("Do you want to play again? (y/n)."); 
         
             // Check if the user wants to play again.   
         } while (Console.ReadLine()?.ToLower( ) == "y");
         
         // End of the game.
         Console.WriteLine("Thank you for playing!");
-    }
+    }  
 }
