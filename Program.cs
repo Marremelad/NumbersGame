@@ -26,7 +26,7 @@ class Program
                 1 => 10,
                 2 => 5,
                 3 => 1,
-                // Handle unexpected values, though this should not be reached
+                // Handle unexpected values, though this should not be reached.
                 _ => throw new ArgumentOutOfRangeException() 
             };
         }
@@ -38,7 +38,7 @@ class Program
             bool isNumber;
             do
             {
-                Console.WriteLine("Please enter an integer between 1 and 20.\n");
+                Console.WriteLine("Please enter an integer between 1 and 20.");
                 // Try to parse the user input as an integer.
                 isNumber = int.TryParse(Console.ReadLine(), out userNumber);
             } while (!isNumber || userNumber < 1 || userNumber > 20);
@@ -69,7 +69,6 @@ class Program
         {
             if (numberOfTries <= 0)
             {
-                Console.WriteLine("\nYou lose!");
                 return true; // Game over if the user runs out of tries.
             }
             return isWinner; // Return whether the user has won.
@@ -79,15 +78,17 @@ class Program
         void InitiateGame()
         {
             int randomlyGeneratedNumber = GetRandomNumber(); // Generate a new random number.
+            Console.WriteLine(randomlyGeneratedNumber);
             int numberOfTries = ChooseDifficulty(); // Initialize number of tries.
             
             do
             {
                 Console.Write($"You have {numberOfTries} number of tries left. ");
                 numberOfTries--; // Increment the number of tries.
+                
 
                 // Continue the game until the user wins or runs out of tries.
-            } while (!OutOfTries(CompareNumbers(GetNumber(), randomlyGeneratedNumber), numberOfTries)); 
+            } while (!OutOfTries(CompareNumbers(GetNumber(), randomlyGeneratedNumber), numberOfTries));
         }
 
         // Main game loop.
@@ -97,7 +98,7 @@ class Program
             Console.WriteLine("Welcome to the Numbers Game! Can you guess the number? Good luck!");
             InitiateGame(); // Start a new game.
             
-            Console.WriteLine("\nDo you want to play again? (y/n)."); 
+            Console.WriteLine("Do you want to play again? (y/n)."); 
         
             // Check if the user wants to play again.   
         } while (Console.ReadLine()?.ToLower( ) == "y");
