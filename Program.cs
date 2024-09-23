@@ -64,9 +64,7 @@ class Program
         void PlayGame()
         {
             int randomlyGeneratedNumber = GetRandomNumber(); // Generate a new random number.
-            Console.WriteLine(randomlyGeneratedNumber);
             int numberOfTries = ChooseDifficulty(); // Initialize number of tries.
-
             
             while (true)
             {
