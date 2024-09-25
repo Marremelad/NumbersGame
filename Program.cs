@@ -38,7 +38,7 @@ class Program
             bool isNumber;
             do
             {
-                Console.WriteLine("Please enter an integer between 1 and 20.\n");
+                Console.WriteLine("Please enter an integer between 1 and 20.");
                 // Try to parse the user input as an integer.
                 isNumber = int.TryParse(Console.ReadLine(), out userNumber);
             } while (!isNumber || userNumber < 1 || userNumber > 20);
@@ -69,7 +69,7 @@ class Program
             // Compare user input to random number and track number of times guessed.
             while (true)
             {
-                Console.Write($"You have {numberOfTries} number of tries left. ");
+                Console.Write($"You have {numberOfTries} number of tries left.");
                 if (!CompareNumbers(GetNumber(), randomlyGeneratedNumber))
                 {
                     numberOfTries--;
