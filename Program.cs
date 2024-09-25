@@ -52,10 +52,15 @@ class Program
         // Method to compare user's guess with the randomly generated number.
         bool CompareNumbers(int userNumber, int randomlyGeneratedNumber)
         {
-            // Compare the numbers, output if right or wrong.
-            Console.WriteLine(userNumber == randomlyGeneratedNumber ? "Congratulations, you won!" :
-                userNumber > randomlyGeneratedNumber ? "You guessed to high." :
-                "You guessed to low.");
+            Console.WriteLine(userNumber == randomlyGeneratedNumber
+                ? "Congratulations, you won.!"
+                : userNumber > randomlyGeneratedNumber
+                    ? userNumber > randomlyGeneratedNumber && userNumber < (randomlyGeneratedNumber + 5)
+                        ? "You guessed to high but you are close."
+                        : "You guessed to high."
+                    : userNumber < randomlyGeneratedNumber && userNumber > (randomlyGeneratedNumber - 5)
+                        ? "You guessed to low but you are close."
+                        : "You guessed to low.");
             
             return userNumber == randomlyGeneratedNumber;
         }
