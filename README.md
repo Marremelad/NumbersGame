@@ -4,7 +4,7 @@
 This program is a numbers guessing game in the console.
 
 ### Features
-* Choose difficulty.
+* Choose a difficulty.
 * Hints when guessing a number that is close to the right number.
 
 ### Application demo
